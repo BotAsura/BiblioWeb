@@ -1,0 +1,244 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+nav{
+    background: rgb(31, 34, 46);
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: wheat;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: rgb(230, 230, 250);
+    font-size: 17px;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    border-radius: 5px;
+}
+a.active{
+    color: wheat;
+    background: rgb(57, 71, 83);
+}
+a:hover{
+    background: rgb(57, 71, 83);
+    color: wheat;
+    transition: .5s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+}
+.checkbtn{
+    font-size: 30px;
+    color: rgb(230, 230, 250);
+    float:  right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+.page-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product-container{
+    margin: 10px 20px;
+    position: relative;
+    padding: 16px 16px 8px;
+    background-color: rgba(255, 255, 255, .9);
+    color: black;
+    border-radius: 10px;
+}
+.product-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+    color: rgb(230, 230, 250);
+    background: rgba(31, 34, 46, 0.9 );
+    transition: .5s;
+}
+.product-container img{
+    width: 270px;
+    height: 350px;
+}
+
+.formatContainer{
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+.formato{
+    font-size: 40px;
+    color: black;
+    text-align: center;
+    background-color: rgb(230, 230, 250);
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px 0px 0px 0px;
+}
+.blockContainer{
+    justify-content: center;
+}
+.blocks{
+    align-content: center;
+    display: inline-block;
+    font-size: 30px;
+    text-align: center;
+    background:rgb(31, 34, 46);
+    padding: 10px;
+    color: aliceblue;
+    width: 80%;
+    border-radius: 10px;
+}
+.comentario{
+    font-size: 30px;
+    color: rgb(230, 230, 250);
+    width: 100%;
+    text-align: center;
+}
+.texto{
+    font-size: 25px;
+    color: rgb(230, 230, 250);
+    width: 100%;
+    text-align: center;
+}
+
+.formulario{
+    font-size: 40px;
+    padding: 50px;
+    color: black;
+    background-color: rgba(230, 230, 250, 0.8);
+    border-radius: 50px;
+    width: 800px;
+    margin: 100px;
+    text-align: center;
+}
+.input{
+    float: right;
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: rgba(230, 230, 250, 0.5);
+    width: 300px;
+}
+.button{
+    font-size: 30px;
+    font-family: cursive;
+    border-radius: 10px;
+    background-color: rgb(31, 34, 46);
+    color: rgb(230, 230, 250);
+    width: 80%;
+}
+button:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+    transition: .5s;
+    color: wheat;
+    cursor: pointer;
+}
+
+.ventaContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    height: auto;
+    background: rgba(230, 230, 250, 0.8);
+    border-radius: 10px;
+    margin: 50px 0px 0px 5%;
+    padding: 50px;
+}
+.ventaContainer img{
+    width: 400px;
+    height: 450px;
+}
+.descripcion{
+    width: 1000px;
+    padding: 50px;
+    font-size: 30px;
+    text-align: justify;
+}
+.descripcion a{
+    text-decoration: none;
+    cursor: pointer;
+    color: blue;
+}
+.descripcion a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: violet;
+    background: none;
+}
+
+.carrito{
+    font-size: 40px;
+    color: rgb(31, 34, 46);
+    width: 100%;
+    text-align: center;
+    background-color:rgba(230, 230, 250, 0.8);
+    padding: 10px;
+}
+
+@media(max-width: 980px){
+    .formulario{
+        width: 500px;
+    }
+    h2{
+        font-size: 35px;
+    }
+}
+
+@media(max-width: 1400px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #2c3e50;
+        border: 5px solid rgb(31, 34, 46);
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 5;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    a:hover{
+        color: wheat;
+    }
+    a.active{
+        color: wheat;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+}

@@ -37,7 +37,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbCliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__TbClient__3DD0A8CB7A9BA3A6");
+                    .HasName("PK__TbClient__3DD0A8CB91E63855");
 
                 entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
 
@@ -49,9 +49,9 @@ namespace BiblioWeb.Models
                     .IsRequired()
                     .HasMaxLength(30);
 
-                entity.Property(e => e.Direccion)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Calle).HasMaxLength(30);
+
+                entity.Property(e => e.Colonia).HasMaxLength(30);
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
@@ -59,9 +59,7 @@ namespace BiblioWeb.Models
                     .IsRequired()
                     .HasMaxLength(30);
 
-                entity.Property(e => e.Telefono)
-                    .IsRequired()
-                    .HasMaxLength(10);
+                entity.Property(e => e.Telefono).HasMaxLength(10);
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.TbCliente)
@@ -73,7 +71,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbLibro>(entity =>
             {
                 entity.HasKey(e => e.IdLibro)
-                    .HasName("PK__TbLibro__FFFE46404BF1AF6A");
+                    .HasName("PK__TbLibro__FFFE4640B4396EC1");
 
                 entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
 
@@ -97,7 +95,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__TbUsuari__63C76BE266B4115F");
+                    .HasName("PK__TbUsuari__63C76BE2FE7DCD4A");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
@@ -108,16 +106,12 @@ namespace BiblioWeb.Models
                 entity.Property(e => e.Correo)
                     .IsRequired()
                     .HasMaxLength(30);
-
-                entity.Property(e => e.Usuario)
-                    .IsRequired()
-                    .HasMaxLength(30);
             });
 
             modelBuilder.Entity<TbVentas>(entity =>
             {
                 entity.HasKey(e => e.IdVentas)
-                    .HasName("PK__TbVentas__464C581F36A67FF4");
+                    .HasName("PK__TbVentas__464C581FF1BB2D46");
 
                 entity.Property(e => e.IdVentas).HasColumnName("Id_Ventas");
 

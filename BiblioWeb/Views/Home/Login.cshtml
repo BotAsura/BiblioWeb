@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOWEB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/project.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+</head>
+<body>        
+    <style>
+    body {
+        background-image: url(/img/bg.png);
+    }    
+    </style>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">BIBLIOWEB</label>
+        <ul>
+            <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
+            <li><a href="Carrito.html" class="text-decoration-none">Carrito</a></li>
+            <li><a href="IniciarSesion.html" class="active text-decoration-none">Iniciar Sesion</a></li>
+            <li><a href="Registrarse.html" class="text-decoration-none">Registrarse</a></li>
+        </ul>
+    </nav>
+    <div class="page-container">
+        <form action="Menu.html" class="formulario">
+            <h2>INICIAR SESION</h2>
+            <br>
+            <label for="correo">Correo Electronico:</label>
+            <input type="email" name="correo" id="correo" placeholder="correo electronico" class="input">
+            <br><br>
+            <label for="contra">Contraseña: </label>
+            <input type="password" name="contra" id="contra" placeholder="contraseña" class="input">
+            <br><br>
+            <button type="submit" class="button">INICIAR SESION</button>            
+        </form>
+    </div>
+</body>
+</html>

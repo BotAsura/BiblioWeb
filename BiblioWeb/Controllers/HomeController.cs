@@ -1,4 +1,5 @@
-﻿using BiblioWeb.Models;
+﻿using BiblioWeb.Clases;
+using BiblioWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,20 +19,18 @@ namespace BiblioWeb.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Login() { 
             return View();
         }
-
-        public IActionResult Privacy()
-        {
+        [HttpGet]
+        public IActionResult Registrar() {
+            ViewBag.Error = "";
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [HttpPost]
+        public IActionResult Registrar(TbUsuario user,TbCliente cliente) {
+            ViewBag.Error = new UsuariosCLS().Reggistrar(user,cliente);
+            return View();
         }
     }
 }
