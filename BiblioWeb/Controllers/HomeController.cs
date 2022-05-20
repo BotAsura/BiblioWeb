@@ -18,9 +18,19 @@ namespace BiblioWeb.Controllers
         {
             _logger = logger;
         }
-
+        [HttpGet]
         public IActionResult Login() { 
             return View();
+        }
+        [HttpPost]
+        public IActionResult Login(TbUsuario user)
+        {
+            string mensaje = new UsuariosCLS().Iniciar_Sesion(user);
+            if (mensaje != "Correcto") {
+                return View();
+            }
+            return RedirectToAction("Menu");
+            
         }
         [HttpGet]
         public IActionResult Registrar() {
@@ -29,7 +39,11 @@ namespace BiblioWeb.Controllers
         }
         [HttpPost]
         public IActionResult Registrar(TbUsuario user,TbCliente cliente) {
-            ViewBag.Error = new UsuariosCLS().Reggistrar(user,cliente);
+            ViewBag.Error = new UsuariosCLS().Registrar(user, cliente);
+            return View();
+        }
+
+        public IActionResult Menu() {
             return View();
         }
     }

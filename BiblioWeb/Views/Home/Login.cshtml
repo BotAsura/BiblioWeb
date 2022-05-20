@@ -27,21 +27,21 @@
         </label>
         <label class="logo">BIBLIOWEB</label>
         <ul>
-            <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
-            <li><a href="Carrito.html" class="text-decoration-none">Carrito</a></li>
-            <li><a href="IniciarSesion.html" class="active text-decoration-none">Iniciar Sesion</a></li>
-            <li><a href="Registrarse.html" class="text-decoration-none">Registrarse</a></li>
+            <li><a asp-action="Menu" class="text-decoration-none">Inicio</a></li>
+            <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
+            <li><a asp-action="Login" class="active text-decoration-none">Iniciar Sesion</a></li>
+            <li><a asp-action="Registrar" class="text-decoration-none">Registrarse</a></li>
         </ul>
     </nav>
     <div class="page-container">
-        <form action="Menu.html" class="formulario">
+        <form asp-action="Login" asp-controller="Home" method="post" class="formulario">
             <h2>INICIAR SESION</h2>
             <br>
-            <label for="correo">Correo Electronico:</label>
-            <input type="email" name="correo" id="correo" placeholder="correo electronico" class="input">
+            <label for="Correo">Correo Electronico:</label>
+            <input type="email" name="Correo" id="Correo" placeholder="Correo electronico" class="input">
             <br><br>
-            <label for="contra">Contraseña: </label>
-            <input type="password" name="contra" id="contra" placeholder="contraseña" class="input">
+            <label for="Contraseña">Contraseña: </label>
+            <input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" class="input">
             <br><br>
             <button type="submit" class="button">INICIAR SESION</button>            
         </form>

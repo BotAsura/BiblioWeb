@@ -27,16 +27,17 @@
         </label>
         <label class="logo">BIBLIOWEB</label>
         <ul>
-            <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
-            <li><a href="Carrito.html" class="text-decoration-none">Carrito</a></li>
-            <li><a href="IniciarSesion.html" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a href="Registrarse.html" class="active text-decoration-none">Registrarse</a></li>
+            <li><a asp-action="Menu" class="text-decoration-none">Inicio</a></li>
+            <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
+            <li><a asp-action="Login" class="text-decoration-none">Iniciar Sesion</a></li>
+            <li><a asp-action="Registrar" class="active text-decoration-none">Registrarse</a></li>
         </ul>
     </nav>
     <div class="page-container">
         <form asp-action="Registrar" asp-controller="Home" method="post" class="formulario">
             REGISTRARSE
-            <br><br>
+            <div>@ViewBag.Error</div>
+            <br />
             <label for="Nombre">Nombre:</label>
             <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" class="input">
             <br><br>
