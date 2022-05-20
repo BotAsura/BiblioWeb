@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOWEB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/project.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+</head>
+<body>
+    <style>
+    body {
+        background-image: url(/img/bg.png);
+    }    
+    </style>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">BIBLIOWEB</label>
+        <ul>
+            <li><a asp-action="Menu" asp-controller="Home" class="active text-decoration-none">Inicio</a></li>
+            <li><a asp-action="" asp-controller="Home" class="text-decoration-none">Carrito</a></li>
+            <li><a asp-action="Login" asp-controller="Home" class="text-decoration-none">Iniciar Sesion</a></li>
+            <li><a asp-action="Registrar" asp-controller="Home" class="text-decoration-none">Registrarse</a></li>
+        </ul>
+    </nav>
+    <br><br><br>
+    <div class="formatContainer">
+        <div class="formato">
+            <h2>Introducción</h2>
+            <br>
+            Este es un proyecto dedicado a:
+            <br><br>
+            <div class="blockContainer">
+                <div class="blocks">
+                    Facilitar la compra y venta de libros para impulsar la lectura tanto para los niños, jovenes y adultos.
+                </div>
+                <br><br>
+                <div class="blocks">
+                    Buscar interesados como librerías en México para poder comercializar el software.
+                </div>
+                <br><br>
+                <div class="blocks">
+                    En caso de que el proyecto sea un éxito poder modificar el software a conveniencia del interesado.
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</body>
+</html>
