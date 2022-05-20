@@ -19,6 +19,11 @@ namespace BiblioWeb.Controllers
             _logger = logger;
         }
         [HttpGet]
+        public IActionResult Ventas(int id) { 
+
+            return View(new UsuariosCLS().MostrarUnLibro(id));
+        }
+        [HttpGet]
         public IActionResult Login() { 
             return View();
         }

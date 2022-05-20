@@ -64,5 +64,22 @@ namespace BiblioWeb.Clases
                 return db.TbLibro.ToList();            
             }
         }
+
+        public List<string> MostrarUnLibro(int id) {
+            using (BiblioWebDbContext db = new BiblioWebDbContext())
+            {
+                List<string> libro = new List<string>();
+                var Libro = db.TbLibro.Where(x => x.IdLibro == id).FirstOrDefault();
+                if (Libro != null) {
+                    libro.Add(Libro.Titulo);
+                    libro.Add(Libro.Autor);
+                    libro.Add(Libro.Genero);
+                    libro.Add(Libro.Precio);
+                    libro.Add(Libro.Ruta);
+                }
+                return libro;
+                
+            }
+        }
     }
 }

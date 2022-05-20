@@ -69,13 +69,16 @@
     <div class="page-container">
         @foreach (var item in Model)
         {
-            <a href="Venta.html" class="product-container text-decoration-none">
+            
+            
+            <div href="Venta.html" class="product-container text-decoration-none">
                 <img src="@item.Ruta">
                 <h3>@item.Titulo</h3>
                 <h2>@item.Autor</h2>
                 <h4>@item.Genero</h4>
-                <h2>@item.Precio</h2>
-            </a>
+                <h2>@item.Precio</h2>                    
+                @Html.ActionLink("Comprar","Ventas","Home",new { id = @item.IdLibro},new {@class="btn btn-dark"})                
+            </div>
         }        
     </div>
     <br><br><br>
