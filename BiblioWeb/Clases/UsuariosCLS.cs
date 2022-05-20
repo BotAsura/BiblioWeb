@@ -1,4 +1,5 @@
 ﻿using BiblioWeb.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BiblioWeb.Clases
@@ -56,6 +57,12 @@ namespace BiblioWeb.Clases
                 }
                 return "Contraseña y/o Usuario Incorrecto";
             }                       
+        }
+
+        public List<TbLibro> MostrarLibros() {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
+                return db.TbLibro.ToList();            
+            }
         }
     }
 }

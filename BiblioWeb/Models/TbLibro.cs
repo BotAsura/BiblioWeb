@@ -19,6 +19,7 @@ namespace BiblioWeb.Models
         public string Autor { get; set; }
         public string Genero { get; set; }
         public string Precio { get; set; }
+        public string Ruta { get; set; }
 
         public virtual ICollection<TbVentas> TbVentas { get; set; }
     }

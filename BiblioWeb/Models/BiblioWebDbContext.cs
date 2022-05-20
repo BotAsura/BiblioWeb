@@ -28,6 +28,7 @@ namespace BiblioWeb.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=Asura;Initial Catalog=BiblioWebDb;Integrated Security=True");
             }
         }
@@ -37,7 +38,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbCliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__TbClient__3DD0A8CB91E63855");
+                    .HasName("PK__TbClient__3DD0A8CBA6022E7E");
 
                 entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
 
@@ -71,7 +72,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbLibro>(entity =>
             {
                 entity.HasKey(e => e.IdLibro)
-                    .HasName("PK__TbLibro__FFFE4640B4396EC1");
+                    .HasName("PK__TbLibro__FFFE4640D8B767F5");
 
                 entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
 
@@ -85,7 +86,11 @@ namespace BiblioWeb.Models
 
                 entity.Property(e => e.Precio)
                     .IsRequired()
-                    .HasMaxLength(5);
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Ruta)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Titulo)
                     .IsRequired()
@@ -95,7 +100,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__TbUsuari__63C76BE2FE7DCD4A");
+                    .HasName("PK__TbUsuari__63C76BE2762C37D7");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
@@ -111,7 +116,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbVentas>(entity =>
             {
                 entity.HasKey(e => e.IdVentas)
-                    .HasName("PK__TbVentas__464C581FF1BB2D46");
+                    .HasName("PK__TbVentas__464C581F63F0D51B");
 
                 entity.Property(e => e.IdVentas).HasColumnName("Id_Ventas");
 

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<TbLibro>
 @{
     Layout = null;
 }
@@ -67,90 +67,16 @@
 <!--PAGINA-->
     
     <div class="page-container">
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/Libro.png">
-            <h3>El Libro De Mormon</h3>
-            <h4>Suspenso Horror</h4>
-            <h2>$500.00</h2>
-        </a>
-        <a href="Venta.html" class="product-container text-decoration-none">
-            <img src="~/img/ImagenPrueba.png">
-            <h3>Aventuras de Bill</h3>
-            <h4>Infantil </h4>
-            <h2>$300.00</h2>
-        </a>
+        @foreach (var item in Model)
+        {
+            <a href="Venta.html" class="product-container text-decoration-none">
+                <img src="@item.Ruta">
+                <h3>@item.Titulo</h3>
+                <h2>@item.Autor</h2>
+                <h4>@item.Genero</h4>
+                <h2>@item.Precio</h2>
+            </a>
+        }        
     </div>
     <br><br><br>
     <script src="~/js/popperjs.js" ></script>

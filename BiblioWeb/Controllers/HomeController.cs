@@ -44,7 +44,8 @@ namespace BiblioWeb.Controllers
         }
 
         public IActionResult Menu() {
-            return View();
+
+            return View(new UsuariosCLS().MostrarLibros());
         }
     }
 }
