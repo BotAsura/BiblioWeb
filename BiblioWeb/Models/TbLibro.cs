@@ -11,7 +11,7 @@ namespace BiblioWeb.Models
     {
         public TbLibro()
         {
-            TbVentas = new HashSet<TbVentas>();
+            TbPedido = new HashSet<TbPedido>();
         }
 
         public int IdLibro { get; set; }
@@ -21,6 +21,6 @@ namespace BiblioWeb.Models
         public string Precio { get; set; }
         public string Ruta { get; set; }
 
-        public virtual ICollection<TbVentas> TbVentas { get; set; }
+        public virtual ICollection<TbPedido> TbPedido { get; set; }
     }
 }

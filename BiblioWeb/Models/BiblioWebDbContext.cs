@@ -21,6 +21,7 @@ namespace BiblioWeb.Models
 
         public virtual DbSet<TbCliente> TbCliente { get; set; }
         public virtual DbSet<TbLibro> TbLibro { get; set; }
+        public virtual DbSet<TbPedido> TbPedido { get; set; }
         public virtual DbSet<TbUsuario> TbUsuario { get; set; }
         public virtual DbSet<TbVentas> TbVentas { get; set; }
 
@@ -38,7 +39,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbCliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__TbClient__3DD0A8CBA6022E7E");
+                    .HasName("PK__TbClient__3DD0A8CB42529A5B");
 
                 entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
 
@@ -72,7 +73,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbLibro>(entity =>
             {
                 entity.HasKey(e => e.IdLibro)
-                    .HasName("PK__TbLibro__FFFE4640D8B767F5");
+                    .HasName("PK__TbLibro__FFFE46403735EC2F");
 
                 entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
 
@@ -97,10 +98,34 @@ namespace BiblioWeb.Models
                     .HasMaxLength(50);
             });
 
+            modelBuilder.Entity<TbPedido>(entity =>
+            {
+                entity.HasKey(e => e.IdPedido)
+                    .HasName("PK__TbPedido__A5D00139EBBDA899");
+
+                entity.Property(e => e.IdPedido).HasColumnName("Id_Pedido");
+
+                entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
+
+                entity.HasOne(d => d.IdLibroNavigation)
+                    .WithMany(p => p.TbPedido)
+                    .HasForeignKey(d => d.IdLibro)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Libro_Pedido");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.TbPedido)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Usuario_Pedido");
+            });
+
             modelBuilder.Entity<TbUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__TbUsuari__63C76BE2762C37D7");
+                    .HasName("PK__TbUsuari__63C76BE219BED276");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
@@ -116,27 +141,19 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbVentas>(entity =>
             {
                 entity.HasKey(e => e.IdVentas)
-                    .HasName("PK__TbVentas__464C581F63F0D51B");
+                    .HasName("PK__TbVentas__464C581F7F8983A2");
 
                 entity.Property(e => e.IdVentas).HasColumnName("Id_Ventas");
 
                 entity.Property(e => e.Fecha).HasColumnType("datetime");
 
-                entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
+                entity.Property(e => e.IdPedido).HasColumnName("Id_Pedido");
 
-                entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
-
-                entity.HasOne(d => d.IdLibroNavigation)
+                entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbVentas)
-                    .HasForeignKey(d => d.IdLibro)
+                    .HasForeignKey(d => d.IdPedido)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Libto");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.TbVentas)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Usuario_Venta");
+                    .HasConstraintName("fk_Pedido");
             });
 
             OnModelCreatingPartial(modelBuilder);

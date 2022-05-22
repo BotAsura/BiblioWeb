@@ -28,10 +28,10 @@
     </label>
     <label class="logo">BIBLIOWEB</label>
     <ul>
-        <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
-        <li><a href="Carrito.html" class="text-decoration-none">Carrito</a></li>
-        <li><a href="IniciarSesion.html" class="text-decoration-none">Iniciar Sesion</a></li>
-        <li><a href="Registrarse.html" class="text-decoration-none">Registrarse</a></li>
+        <li><a asp-action="Menu" class="active text-decoration-none">Inicio</a></li>
+        <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
+        <li><a asp-action="Login" class="text-decoration-none">Iniciar Sesion</a></li>
+        <li><a asp-action="Registrar" class="text-decoration-none">Registrarse</a></li>
     </ul>
 </nav>
     <div class="ventaContainer">
@@ -44,7 +44,9 @@
             <br><br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ad aliquid similique in quis aut. Consectetur magni hic sapiente eligendi voluptatum soluta necessitatibus in nisi modi iusto aliquid consequuntur qui quam, neque adipisci commodi? Unde consectetur nulla ex quam reprehenderit laboriosam eaque porro iste, repudiandae quod perferendis a voluptas nam vel ipsa eveniet eligendi dolore quaerat ratione voluptatem blanditiis vitae. Iste beatae, corporis magnam non eaque porro soluta, ipsam quo nobis facere nesciunt eveniet veritatis? Repellat, quasi minus. Molestiae accusamus laudantium, ipsum nostrum facilis maiores perferendis illo vitae optio, quae fugiat sint deleniti ducimus voluptate asperiores nesciunt sunt doloribus reiciendis? 
             <br><br>                        
-            <form action="Carrito.html">
+
+            <form asp-action="Ventas" asp-controller="Home" method="post">
+                <input type="hidden" value="@Model[5]" />
                 <button type="submit"  class="button">AGREGAR</button>
             </form>
         </div>

@@ -12,7 +12,7 @@ namespace BiblioWeb.Models
         public TbUsuario()
         {
             TbCliente = new HashSet<TbCliente>();
-            TbVentas = new HashSet<TbVentas>();
+            TbPedido = new HashSet<TbPedido>();
         }
 
         public int IdUsuario { get; set; }
@@ -20,6 +20,6 @@ namespace BiblioWeb.Models
         public string Contraseña { get; set; }
 
         public virtual ICollection<TbCliente> TbCliente { get; set; }
-        public virtual ICollection<TbVentas> TbVentas { get; set; }
+        public virtual ICollection<TbPedido> TbPedido { get; set; }
     }
 }

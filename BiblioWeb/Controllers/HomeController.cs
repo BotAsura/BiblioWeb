@@ -23,6 +23,11 @@ namespace BiblioWeb.Controllers
 
             return View(new UsuariosCLS().MostrarUnLibro(id));
         }
+        [HttpPost]
+        public IActionResult Ventas(string id) {
+            new UsuariosCLS().RegistrarPedido(int.Parse(id));
+            return RedirectToAction("Carrito","Home");
+        }
         [HttpGet]
         public IActionResult Login() { 
             return View();
@@ -47,7 +52,11 @@ namespace BiblioWeb.Controllers
             ViewBag.Error = new UsuariosCLS().Registrar(user, cliente);
             return View();
         }
-
+        [HttpGet]
+        public IActionResult Carrito() {
+            return View(new UsuariosCLS().MostrarPedidos());
+        }
+        
         public IActionResult Menu() {
 
             return View(new UsuariosCLS().MostrarLibros());

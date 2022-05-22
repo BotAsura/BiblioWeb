@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOWEB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/project.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">BIBLIOWEB</label>
+        <ul>
+            <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
+            <li><a href="Carrito.html" class="active text-decoration-none">Carrito</a></li>
+            <li><a href="IniciarSesion.html" class="text-decoration-none">Iniciar Sesion</a></li>
+            <li><a href="Registrarse.html" class="text-decoration-none">Registrarse</a></li>
+        </ul>
+    </nav>
+    <br><br>
+    <div class="carrito">
+        <h2>CARRITO</h2>
+    </div>
+    <br><br>
+    <div class="page-container">
+        @foreach (var item in Model)
+        {                        
+            <div href="Venta.html" class="product-container text-decoration-none">
+                <img src="@item.Ruta">
+                <h3>@item.Titulo</h3>
+                <h2>@item.Autor</h2>
+                <h4>@item.Genero</h4>
+                <h2>@item.Precio</h2>                                    
+            </div>
+        }    
+    </div>
+</body>
+</html>

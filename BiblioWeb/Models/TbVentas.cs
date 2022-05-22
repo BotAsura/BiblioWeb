@@ -11,10 +11,8 @@ namespace BiblioWeb.Models
     {
         public int IdVentas { get; set; }
         public DateTime Fecha { get; set; }
-        public int IdUsuario { get; set; }
-        public int IdLibro { get; set; }
+        public int IdPedido { get; set; }
 
-        public virtual TbLibro IdLibroNavigation { get; set; }
-        public virtual TbUsuario IdUsuarioNavigation { get; set; }
+        public virtual TbPedido IdPedidoNavigation { get; set; }
     }
 }
