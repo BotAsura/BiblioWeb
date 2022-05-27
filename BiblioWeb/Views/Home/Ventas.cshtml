@@ -10,45 +10,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIBLIOWEB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" href="~/css/project.css">
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <style>
-    body {
-        background-image: url(/img/bg.png);
-    }    
-    </style>
 <!--BARRA DE NAVEGACION-->
 <nav>
-    <input type="checkbox" id="check">
-    <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo">BIBLIOWEB</label>
-    <ul>
-        <li><a asp-action="Menu" class="active text-decoration-none">Inicio</a></li>
-        <li><a asp-action="Carrito" class="text-decoration-none">Carrito</a></li>
-        <li><a asp-action="Login" class="text-decoration-none">Iniciar Sesion</a></li>
-        <li><a asp-action="Registrar" class="text-decoration-none">Registrarse</a></li>
-    </ul>
-</nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">BIBLIOWEB</label>
+        <ul>
+            <li><a asp-action="Menu" class=" text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
+            <li><a asp-action="Carrito" class="active text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
+            <li><a href="Vender.html" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+            <li><a href="User.html" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>Username</a></li>
+            <li><a href="LogIn.html" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
+        </ul>
+    </nav>
     <div class="ventaContainer">
-        <img src="@Model[4]">
+        <div class="ventaDatos">
+            <img src="@Model[4]">
         <div class="descripcion">
             <h2>@Model[0]</h2>
             <h3>@Model[1]</h3>
             <h3>@Model[2]</h3>
             <h3>@Model[3]</h3>                        
             <br><br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ad aliquid similique in quis aut. Consectetur magni hic sapiente eligendi voluptatum soluta necessitatibus in nisi modi iusto aliquid consequuntur qui quam, neque adipisci commodi? Unde consectetur nulla ex quam reprehenderit laboriosam eaque porro iste, repudiandae quod perferendis a voluptas nam vel ipsa eveniet eligendi dolore quaerat ratione voluptatem blanditiis vitae. Iste beatae, corporis magnam non eaque porro soluta, ipsam quo nobis facere nesciunt eveniet veritatis? Repellat, quasi minus. Molestiae accusamus laudantium, ipsum nostrum facilis maiores perferendis illo vitae optio, quae fugiat sint deleniti ducimus voluptate asperiores nesciunt sunt doloribus reiciendis? 
+            <p>DESCRIPCION Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni provident optio quibusdam quas ipsum quidem deserunt enim temporibus inventore. Doloribus dolor velit labore sit, perspiciatis molestias magni ullam. Voluptatem voluptas tempore facere minima cumque quos veniam harum, quibusdam fuga similique eos! Accusamus quia voluptas sed maxime autem maiores repellendus nulla molestiae veniam vitae tempore, dolor assumenda rerum sequi incidunt iusto debitis quibusdam necessitatibus nobis? Aperiam nisi neque in, laborum voluptas minima assumenda pariatur, sed cupiditate esse quibusdam cum ad vitae laudantium repellendus eveniet expedita repellat consequuntur, unde odit explicabo sunt. Aliquam veritatis rerum accusamus non iure eius amet placeat quis quibusdam, explicabo dignissimos sit ea iusto eaque et distinctio? Libero minus aspernatur vero dolorem suscipit, numquam officiis quibusdam repudiandae quae cumque est illum deleniti aliquid voluptatum fugit in quis eos nostrum. Laborum dolore soluta quis, debitis ad, facilis nesciunt ipsum rerum qui exercitationem eaque sed officia? Velit totam laboriosam, placeat perspiciatis laudantium tempore autem esse pariatur voluptatem, optio suscipit aperiam voluptatum? Ipsum repudiandae, dignissimos placeat officiis quia non? Dicta porro, unde nemo voluptate sed culpa dolorem quasi. Voluptate necessitatibus aspernatur rem consequatur unde minus laudantium iste assumenda libero dolor cumque ea molestiae reprehenderit quo, rerum laborum itaque, deserunt ab neque odit earum. Quos ipsum ullam vel amet inventore impedit corporis beatae autem, unde veniam facilis cum quisquam exercitationem velit officia itaque sit obcaecati, eveniet fugiat, corrupti necessitatibus esse id? In, similique! Laborum suscipit optio corporis error debitis ducimus harum esse officiis adipisci rerum temporibus vitae, soluta, veritatis impedit maiores dolor dolorem repellat magnam perferendis neque obcaecati inventore? Ipsum pariatur natus libero ad non consequuntur quia veritatis numquam doloremque cumque sit eaque officia dicta, quo veniam voluptate voluptas neque nam tempore sint corporis minima ullam. Accusantium ipsam veniam, minima recusandae aspernatur vero soluta id iste incidunt reiciendis temporibus nobis assumenda repellat dignissimos, nisi sapiente provident at eius corrupti numquam facere, veritatis ea aut? Amet dignissimos commodi quaerat ratione possimus accusantium ipsa nihil nulla deleniti earum consequatur, mollitia cupiditate in tenetur cum. Tempora, provident quaerat velit a quidem deleniti inventore consectetur labore cupiditate autem! Voluptatem provident illum fuga ad commodi velit facere tempora nulla impedit obcaecati, quia praesentium modi iure consectetur facilis deserunt odio repudiandae quis mollitia nihil consequatur beatae fugit nobis exercitationem. Error, architecto et vel nisi quidem maxime quas nihil, explicabo eligendi doloribus eos accusamus veritatis vitae nam adipisci, recusandae hic excepturi laboriosam! Quo velit et aliquid cumque deserunt voluptatum amet? Fuga ratione adipisci laboriosam maxime atque, incidunt necessitatibus architecto. Repudiandae natus, sit officia, laborum veritatis placeat, incidunt vel voluptate dignissimos unde quidem odit dicta quos omnis nulla doloremque iusto nostrum nam. Aut ducimus saepe amet, distinctio velit culpa. Placeat doloremque itaque sunt minima quas magni explicabo numquam suscipit, quibusdam, accusamus impedit ratione voluptates! Voluptas eveniet veniam, deserunt cumque quis et fuga similique, tempore magni commodi delectus assumenda exercitationem pariatur eligendi nostrum. Fugit nam est incidunt deleniti autem mollitia pariatur! Nisi explicabo alias in accusamus, at cum voluptatum dolor quisquam quo eum ipsum totam temporibus omnis quis velit qui libero?</p>
             <br><br>                        
 
             <form asp-action="Ventas" asp-controller="Home" method="post">
                 <input type="hidden" value="@Model[5]" />
-                <button type="submit"  class="button">AGREGAR</button>
+                <button type="submit" class="preButton"><ion-icon name="bag-add"></ion-icon>  AÑADIR</button>
             </form>
+        </div>
         </div>
     </div>  
     <br><br><br>
