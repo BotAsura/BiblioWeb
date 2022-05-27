@@ -2,49 +2,46 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="esp">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIBLIOWEB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiblioWeb</title>
     <link rel="stylesheet" href="~/css/project.css">
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
-<body>        
-    <style>
-    body {
-        background-image: url(/img/bg.png);
-    }    
-    </style>
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo">BIBLIOWEB</label>
-        <ul>
-            <li><a asp-action="Menu" class="text-decoration-none">Inicio</a></li>
-            <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
-            <li><a asp-action="Login" class="active text-decoration-none">Iniciar Sesion</a></li>
-            <li><a asp-action="Registrar" class="text-decoration-none">Registrarse</a></li>
-        </ul>
-    </nav>
-    <div class="page-container">
-        <form asp-action="Login" asp-controller="Home" method="post" class="formulario">
-            <h2>INICIAR SESION</h2>
-            <br>
-            <label for="Correo">Correo Electronico:</label>
-            <input type="email" name="Correo" id="Correo" placeholder="Correo electronico" class="input">
-            <br><br>
-            <label for="Contraseña">Contraseña: </label>
-            <input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" class="input">
-            <br><br>
-            <button type="submit" class="button">INICIAR SESION</button>            
-        </form>
-    </div>
+<body>
+    <section id="dividida">
+        <div class="derecha">
+            <form asp-action="Login" asp-controller="Home" method="post" class="login">
+                <ion-icon name="book"></ion-icon>BiblioWeb
+                <br><br>
+                <h2>Inicia Sesion</h2>
+                <hr><br>
+                <h4><ion-icon name="mail"></ion-icon>e-mail:</h4>
+                <input type="email" name="Correo" id="email" placeholder="correo electronico" required class="preInput">
+                <br><br>
+                <h4><ion-icon name="lock-closed"></ion-icon>Contraseña:</h4>
+                <input type="password" name="Contraseña" id="contra" placeholder="contraseña" required class="preInput">
+                <br><br><br>
+                <button type="submit"  class="preButton">INICIAR</button>
+            </form>
+        </div>
+        <div class="izquierda">
+            <form asp-action="Registrar" asp-controller="Home" method="get" class="login">
+                <br><br><br>
+                <h2>Registrate</h2>
+                <hr><br>
+                Registrate para poder disfrutar de todo lo que te ofrece
+                <br>
+                BiblioWeb
+                <br><br><br><br>
+                <button type="submit" class="preButton" >REGISTRARSE</button>                               
+            </form>
+        </div>
+    </section>
 </body>
 </html>

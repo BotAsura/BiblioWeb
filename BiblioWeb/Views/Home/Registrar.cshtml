@@ -2,59 +2,58 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="esp">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIBLIOWEB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/project.css">
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <title>BiblioWeb</title>
+    <link rel="stylesheet" href="~/css/project.css">    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
 </head>
 <body>
-    <style>
-    body {
-        background-image: url(/img/bg.png);
-    }    
-    </style>
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo">BIBLIOWEB</label>
-        <ul>
-            <li><a asp-action="Menu" class="text-decoration-none">Inicio</a></li>
-            <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
-            <li><a asp-action="Login" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a asp-action="Registrar" class="active text-decoration-none">Registrarse</a></li>
-        </ul>
-    </nav>
-    <div class="page-container">
-        <form asp-action="Registrar" asp-controller="Home" method="post" class="formulario">
-            REGISTRARSE
-            <div>@ViewBag.Error</div>
-            <br />
-            <label for="Nombre">Nombre:</label>
-            <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" class="input">
+    <section class="registerContainer">
+        <form asp-action="Registrar" asp-controller="Home" method="post" class="register">
+            <ion-icon name="book"></ion-icon>BiblioWeb
             <br><br>
-            <label for="ApellidoPat">Apellido Paterno:</label>
-            <input type="text" name="ApellidoPat" id="ApellidoPat" placeholder="Apellido Paterno" class="input">
+            <h2>Registro</h2>
+            <hr>
             <br><br>
-            <label for="ApellidoMat">Apellido Materno:</label>
-            <input type="text" name="ApellidoMat" id="ApellidoMat" placeholder="Apellido Materno" class="input">
+            <h4><ion-icon name="person"></ion-icon>Nombre: </h4>
+            <input type="text" name="Nombre" id="nombre" placeholder="nombre" required class="preInput">
             <br><br>
-            <label for="Correo">Correo Electronico:</label>
-            <input type="email" name="Correo" id="Correo" placeholder="Correo electronico" class="input">
+            <h4><ion-icon name="bookmark"></ion-icon>Apellido Paterno: </h4>
+            <input type="text" name="ApellidoPat" id="apellidoP" placeholder="apellidoP" required class="preInput">
             <br><br>
-            <label for="Contraseña">Contraseña: </label>
-            <input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" class="input">
+            <h4><ion-icon name="bookmarks"></ion-icon>Apellido Materno: </h4>
+            <input type="text" name="ApellidoMat" id="apellidoM" placeholder="apellidoM" required class="preInput">
             <br><br>
-            <button type="submit" class="button">REGISTRARSE</button>
+            <h4><ion-icon name="paper-plane"></ion-icon>Colonia: </h4>
+            <input type="text" name="Colonia" id="colonia" placeholder="colonia" required class="preInput">
+            <br><br>
+            <h4><ion-icon name="car"></ion-icon>Calle: </h4>
+            <input type="text" name="Calle" id="calle" placeholder="calle" required class="preInput">
+            <br><br>
+            <h4><ion-icon name="clipboard"></ion-icon>Numero: </h4>
+            <input type="text" name="Numero" id="numero" placeholder="numero" required class="preInput">
+            <br><br>
+            <h4><ion-icon name="mail"></ion-icon>e-mail: </h4>
+            <input type="email" name="Correo" id="email" placeholder="correo electronico" required class="preInput">
+            <br><br>
+            <h4><ion-icon name="lock-closed"></ion-icon>Contraseña: </h4>
+            <input type="password" name="Contraseña" id="contra" placeholder="contraseña" required class="preInput">
+            <br><br>
+            <h4><ion-icon name="document-lock"></ion-icon>Confirmar: </h4>
+            <input type="password" name="contraConf" id="contraConf" placeholder="contraseña" required class="preInput">
+            <br><br><br>
+            <button type="submit" class="preButton" id="open-popup-btn" onclick="Pop();">INICIAR</button>
+            <br><br><br>
         </form>
-    </div>
+    </section>
+   
+    
 </body>
 </html>

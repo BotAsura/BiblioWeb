@@ -38,6 +38,9 @@ namespace BiblioWeb.Clases
                     setCliente.Nombre = cliente.Nombre.ToLower();
                     setCliente.ApellidoPat = cliente.ApellidoPat.ToLower();
                     setCliente.ApellidoMat = cliente.ApellidoMat.ToLower();
+                    setCliente.Colonia = cliente.Colonia.ToLower();
+                    setCliente.Calle = cliente.Calle.ToLower();
+                    setCliente.Numero = cliente.Numero;
                     setCliente.IdUsuario = getUser.IdUsuario;
 
                     db.TbCliente.Add(setCliente);
@@ -126,6 +129,12 @@ namespace BiblioWeb.Clases
 
                 }
                 return getLibrosPedidos;                
+            }
+        }
+
+        public string Comprar(string[] books) {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
+                return "Hola";
             }
         }
     }

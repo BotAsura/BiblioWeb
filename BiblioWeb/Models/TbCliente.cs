@@ -13,7 +13,6 @@ namespace BiblioWeb.Models
         public string Nombre { get; set; }
         public string ApellidoPat { get; set; }
         public string ApellidoMat { get; set; }
-        public string Telefono { get; set; }
         public string Colonia { get; set; }
         public string Calle { get; set; }
         public int? Numero { get; set; }

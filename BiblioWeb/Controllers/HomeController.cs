@@ -56,6 +56,11 @@ namespace BiblioWeb.Controllers
         public IActionResult Carrito() {
             return View(new UsuariosCLS().MostrarPedidos());
         }
+        [HttpPost]
+        public IActionResult Carrito(string[] books) {
+            new UsuariosCLS().Comprar(books);
+            return View();
+        }
         
         public IActionResult Menu() {
 

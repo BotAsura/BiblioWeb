@@ -1,6 +1,7 @@
-﻿
+﻿@model List<TbLibro>
 @{
     Layout = null;
+    int i = 0;
 }
 
 <!DOCTYPE html>
@@ -15,6 +16,11 @@
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
 </head>
 <body>
+        <style>
+    body {
+        background-image: url(/img/bg.png);
+    }    
+    </style>
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -22,28 +28,34 @@
         </label>
         <label class="logo">BIBLIOWEB</label>
         <ul>
-            <li><a href="Menu.html" class="text-decoration-none">Inicio</a></li>
-            <li><a href="Carrito.html" class="active text-decoration-none">Carrito</a></li>
-            <li><a href="IniciarSesion.html" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a href="Registrarse.html" class="text-decoration-none">Registrarse</a></li>
+            <li><a asp-action="Menu" class="active text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
+            <li><a asp-action="Carrito" class="text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
+            <li><a href="Vender.html" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+            <li><a href="User.html" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>Username</a></li>
+            <li><a href="LogIn.html" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
         </ul>
     </nav>
-    <br><br>
-    <div class="carrito">
-        <h2>CARRITO</h2>
-    </div>
-    <br><br>
+    <br>
+    <h2><ion-icon name="cart"></ion-icon>   Carrito</h2>
+    <hr><br>
     <div class="page-container">
         @foreach (var item in Model)
         {                        
+            
             <div href="Venta.html" class="product-container text-decoration-none">
                 <img src="@item.Ruta">
                 <h3>@item.Titulo</h3>
                 <h2>@item.Autor</h2>
                 <h4>@item.Genero</h4>
-                <h2>@item.Precio</h2>                                    
+                <h2>@item.Precio</h2>   
+                <input type="hidden" value="@item.IdLibro" name="books[@i]" />
             </div>
+            i++;
         }    
     </div>
+    <form asp-action="Carrito" asp-controller="Home" method="post">
+        
+        <input type="submit" value="Comprar" />
+    </form>
 </body>
 </html>

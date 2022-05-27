@@ -22,20 +22,22 @@
         background-image: url(/img/bg.png);
     }    
     </style>
-<!--BARRA DE NAVEGACION-->
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo">BIBLIOWEB</label>
-        <ul>
-            <li><a asp-action="Menu" class="active text-decoration-none">Inicio</a></li>
-            <li><a asp-action="" class="text-decoration-none">Carrito</a></li>
-            <li><a asp-action="Login" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a asp-action="Registrar" class="text-decoration-none">Registrarse</a></li>
-        </ul>
-    </nav>
+<!--BARRA DE NAVEGACION-->   
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo"><ion-icon name="book"></ion-icon>BiblioWeb</label>
+    <ul>
+        <li><a asp-action="Menu" class="active text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
+        <li><a asp-action="Carrito" class="text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
+        <li><a href="Vender.html" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+        <li><a href="User.html" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>Username</a></li>
+        <li><a href="LogIn.html" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
+    </ul>
+</nav>
+
 <!--CARRUSEL DE IMAGENES-->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">

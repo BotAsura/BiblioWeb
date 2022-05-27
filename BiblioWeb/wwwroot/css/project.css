@@ -1,69 +1,171 @@
-*{
+* {
     padding: 0;
     margin: 0;
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    font-family: cursive;
+    font-family: 'Trebuchet MS', sans-serif;
+    transition: .5s;
 }
 
-nav{
+/*Login*/
+#dividida {
+    display: flex;
+}
+
+.izquierda {
+    padding: 10%;
+    background: rgb(31, 34, 46);
+    color: rgb(255, 255, 255);
+    width: 50%;
+    height: 100vh;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    .izquierda h2 {
+        font-size: 80px;
+        color: rgb(255, 255, 255)
+    }
+
+.derecha {
+    padding: 10%;
+    width: 50%;
+    height: 100vh;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.login {
+    width: 500px;
+}
+
+    .login h4 {
+        text-align: left;
+        color: rgb(51, 51, 51);
+    }
+
+h2 {
+    text-align: center;
+    font-size: 80px;
+    color: rgb(51, 51, 51);
+}
+
+.preInput {
+    background: rgba(0, 0, 0, .2);
+    font-size: 35px;
+    border: 0px;
+    border-radius: 30px;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.preButton {
+    background: rgb(108, 202, 70);
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    border: 0px;
+    border-radius: 50px;
+    text-align: center;
+    width: 100%;
+    height: 75px;
+}
+
+/*Register*/
+.registerContainer {
+    width: 100%;
+    background: rgb(31, 34, 46);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.register {
+    width: 50%;
+    font-size: 20px;
+    padding: 30px;
+    margin: 30px 0px 30px 0px;
+    background: rgb(255, 255, 255);
+    border-radius: 50px;
+    align-items: center;
+    text-align: center;
+}
+
+    .register h4 {
+        text-align: left;
+        color: rgb(51, 51, 51);
+    }
+
+/*NavBar*/
+nav {
     background: rgb(31, 34, 46);
     height: 80px;
     width: 100%;
 }
-label.logo{
+
+label.logo {
     color: wheat;
     font-size: 35px;
     line-height: 80px;
     padding: 0 100px;
 }
-nav ul{
+
+nav ul {
     float: right;
     margin-right: 20px;
 }
-nav ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-}
-nav ul li a{
-    color: rgb(230, 230, 250);
-    font-size: 17px;
-    text-transform: uppercase;
-    padding: 7px 13px;
-    border-radius: 5px;
-}
-a.active{
+
+    nav ul li {
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+    }
+
+        nav ul li a {
+            color: rgb(230, 230, 250);
+            font-size: 17px;
+            text-transform: uppercase;
+            padding: 7px 13px;
+            border-radius: 5px;
+        }
+
+a.active {
     color: wheat;
     background: rgb(57, 71, 83);
 }
-a:hover{
-    background: rgb(57, 71, 83);
-    color: wheat;
-    transition: .5s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
-}
-.checkbtn{
+
+.checkbtn {
     font-size: 30px;
     color: rgb(230, 230, 250);
-    float:  right;
+    float: right;
     line-height: 80px;
     margin-right: 40px;
     cursor: pointer;
     display: none;
 }
-#check{
+
+#check {
     display: none;
 }
 
-.page-container{
+/*PAGE*/
+.page-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.product-container{
+
+.product-container {
     margin: 10px 20px;
     position: relative;
     padding: 16px 16px 8px;
@@ -71,148 +173,290 @@ a:hover{
     color: black;
     border-radius: 10px;
 }
+
+    .product-container img {
+        width: 270px;
+        height: 350px;
+    }
+
+/*CARRITO*/
+.carrito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.buttonCarrito {
+    width: 80%;
+}
+
+/*>>>>>Hover<<<<<*/
+.izquierda:hover {
+    width: 60%;
+}
+
+.derecha:hover {
+    width: 60%;
+}
+
+.register:hover {
+    width: 60%;
+}
+
+.preInput:hover {
+    height: 60px;
+}
+
+.preButton:hover {
+    cursor: pointer;
+    border: 5px solid rgb(108, 202, 70);
+    background: rgba(255, 255, 255, 0);
+    color: rgb(108, 202, 70);
+    height: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+}
+
+.logo:hover {
+    color: rgba(0, 0, 0, .2);
+}
+
+a:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+    background: rgb(57, 71, 83);
+    transition: 0.5s;
+    color: rgb(245, 222, 179);
+}
+
 .product-container:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
-    color: rgb(230, 230, 250);
-    background: rgba(31, 34, 46, 0.9 );
-    transition: .5s;
-}
-.product-container img{
-    width: 270px;
-    height: 350px;
+    background: rgba(31, 34, 46,.1);
+    transition: 0.1s;
+    color: rgb(31, 34, 46)
 }
 
-.formatContainer{
-    margin: 50px 0px 50px 0px;
+/*PopOut*/
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    width: 350px;
+    height: 280px;
+    padding: 30px 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-sizing: border-box;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    top: -200%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+}
+
+    .popup.active {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+    }
+
+    .popup .icon {
+        margin: 5px 0px;
+        width: 50px;
+        height: 50px;
+        border: 2px solid rgb(31, 34, 46);
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 60px;
+    }
+
+        .popup .icon i .fa {
+            font-size: 30px;
+            color: black
+        }
+
+    .popup .title {
+        margin: 5px 0px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .popup .description {
+        color: rgb(31, 34, 46);
+        font-size: 15px;
+        padding: 5px;
+    }
+
+    .popup .dismiss-btn {
+        margin-top: 15px;
+    }
+
+        .popup .dismiss-btn button {
+            background: rgb(108, 202, 70);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            border: 0px;
+            border-radius: 50px;
+            text-align: center;
+            width: 100%;
+            height: 50px;
+        }
+
+            .popup .dismiss-btn button:hover {
+                cursor: pointer;
+                border: 5px solid rgb(108, 202, 70);
+                background: rgba(255, 255, 255, 0);
+                color: rgb(108, 202, 70);
+                height: 60px;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+            }
+
+    .popup > div {
+        position: relative;
+        top: 10px;
+        opacity: 0;
+    }
+
+    .popup.active > div {
+        top: 0px;
+        opacity: 1;
+    }
+
+    .popup.active .icon {
+        transition: all 300ms ease-in-out 250ms;
+    }
+
+    .popup.active .title {
+        transition: all 300ms ease-in-out 300ms;
+    }
+
+    .popup.active .description {
+        transition: all 300ms ease-in-out 350ms;
+    }
+
+    .popup.active .dismiss-btn {
+        transition: all 300ms ease-in-out 400ms;
+    }
+
+/*User*/
+.userContainer {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
-}
-.formato{
-    font-size: 40px;
-    color: black;
-    text-align: center;
-    background-color: rgb(230, 230, 250);
-    width: 80%;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 50px 0px 0px 0px;
-}
-.blockContainer{
-    justify-content: center;
-}
-.blocks{
-    align-content: center;
-    display: inline-block;
-    font-size: 30px;
-    text-align: center;
-    background:rgb(31, 34, 46);
-    padding: 10px;
-    color: aliceblue;
-    width: 80%;
-    border-radius: 10px;
-}
-.comentario{
-    font-size: 30px;
-    color: rgb(230, 230, 250);
-    width: 100%;
-    text-align: center;
-}
-.texto{
-    font-size: 25px;
-    color: rgb(230, 230, 250);
-    width: 100%;
+    align-items: center;
     text-align: center;
 }
 
-.formulario{
-    font-size: 40px;
-    padding: 50px;
+.user {
+    width: 80%;
+    font-size: 30px;
     color: black;
-    background-color: rgba(230, 230, 250, 0.8);
+    padding: 5px 10px 5px 50px;
+    text-align: left;
+}
+
+.userData {
+    background: rgba(202, 255, 211, 0.836);
+    width: 80%;
+    font-size: 30px;
+    color: rgb(31, 34, 46);
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border: 3px solid rgb(31, 34, 46);
     border-radius: 50px;
-    width: 800px;
-    margin: 100px;
-    text-align: center;
-}
-.input{
-    float: right;
-    font-size: 30px;
-    border-radius: 5px;
-    background-color: rgba(230, 230, 250, 0.5);
-    width: 300px;
-}
-.button{
-    font-size: 30px;
-    font-family: cursive;
-    border-radius: 10px;
-    background-color: rgb(31, 34, 46);
-    color: rgb(230, 230, 250);
-    width: 80%;
-}
-button:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
-    transition: .5s;
-    color: wheat;
-    cursor: pointer;
 }
 
-.ventaContainer{
+/*Statics*/
+.staticContainer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.staticText {
+    font-size: 30px;
+    padding: 20px;
+    margin: 20px;
+}
+
+/*Venta*/
+.ventaContainer {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
-    height: auto;
-    background: rgba(230, 230, 250, 0.8);
-    border-radius: 10px;
-    margin: 50px 0px 0px 5%;
-    padding: 50px;
+    justify-content: space-evenly;
 }
-.ventaContainer img{
-    width: 400px;
-    height: 450px;
-}
-.descripcion{
-    width: 1000px;
+
+.ventaDatos {
+    background: rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    width: 80%;
     padding: 50px;
-    font-size: 30px;
+    float: left;
     text-align: justify;
 }
-.descripcion a{
-    text-decoration: none;
-    cursor: pointer;
-    color: blue;
-}
-.descripcion a:hover{
-    text-decoration: none;
-    cursor: pointer;
-    color: violet;
-    background: none;
-}
 
-.carrito{
-    font-size: 40px;
-    color: rgb(31, 34, 46);
+    .ventaDatos img {
+        width: 405px;
+        height: 525px;
+        float: left;
+        margin: 0px 50px 50px 0px;
+    }
+
+    .ventaDatos h5 {
+        margin-right: 50px;
+        float: right;
+    }
+
+/*Vender*/
+.venderContainer {
     width: 100%;
     text-align: center;
-    background-color:rgba(230, 230, 250, 0.8);
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-@media(max-width: 980px){
-    .formulario{
-        width: 500px;
-    }
-    h2{
+.vender {
+    background: rgba(0, 0, 0, .2);
+    padding: 20px;
+    border-radius: 50px;
+    width: 80%;
+}
+
+    .vender input {
+        background: rgb(255, 255, 255);
         font-size: 35px;
+        border: 0px;
+        border-radius: 30px;
+        text-align: center;
+        width: 80%;
+        height: 50px;
     }
+
+.file {
+    font-size: 10px;
 }
 
-@media(max-width: 1400px){
-    .checkbtn{
+/*>>>>>Media<<<<<*/
+@media(max-width: 1400px) {
+    .checkbtn {
         display: block;
     }
-    ul{
+
+    ul {
         position: fixed;
         width: 100%;
         height: 100%;
@@ -221,24 +465,88 @@ button:hover{
         top: 80px;
         left: -100%;
         text-align: center;
-        transition: all .5s;
         z-index: 5;
     }
-    nav ul li{
+
+    nav ul li {
         display: block;
         margin: 50px 0;
         line-height: 30px;
     }
-    nav ul li a{
-        font-size: 20px;
-    }
-    a:hover{
+
+        nav ul li a {
+            font-size: 20px;
+        }
+
+    .navA:hover {
         color: wheat;
     }
-    a.active{
+
+    .navA.active {
         color: wheat;
     }
-    #check:checked ~ ul{
+
+    #check:checked ~ ul {
         left: 0;
     }
+}
+
+@media(max-width: 1050px) {
+    #dividida {
+        display: block;
+    }
+
+    .derecha {
+        width: 100%;
+    }
+
+    .izquierda {
+        width: 100%;
+    }
+
+        .izquierda:hover {
+            width: 100%;
+        }
+
+    .derecha:hover {
+        width: 100%;
+    }
+
+    .register {
+        width: 80%;
+    }
+
+        .register:hover {
+            width: 80%;
+        }
+}
+
+@media(max-width: 700px) {
+    .ventaContainer {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .ventaDatos {
+        background: rgba(0, 0, 0, .2);
+        border-radius: 50px;
+        width: 80%;
+        padding: 50px;
+        float: left;
+        text-align: justify;
+    }
+
+        .ventaDatos img {
+            width: 270px;
+            height: 350px;
+            float: left;
+            margin: 0px 50px 50px 0px;
+        }
+
+        .ventaDatos h5 {
+            margin-right: 50px;
+            float: right;
+        }
 }
