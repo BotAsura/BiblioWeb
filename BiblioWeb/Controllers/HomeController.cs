@@ -3,11 +3,14 @@ using BiblioWeb.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,10 +20,12 @@ namespace BiblioWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
+            this.hostEnvironment = hostEnvironment;
         }
         [HttpGet]
         [Authorize(Roles = "Usuario")]
@@ -31,6 +36,7 @@ namespace BiblioWeb.Controllers
         [HttpPost]
         [Authorize(Roles = "Usuario")]
         public IActionResult Ventas(string id) {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
             new UsuariosCLS().RegistrarPedido(int.Parse(id));
             return RedirectToAction("Carrito","Home");
         }
@@ -39,7 +45,7 @@ namespace BiblioWeb.Controllers
             return View();
         }   
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(TbUsuario user)
+        public async Task<IActionResult> Login(TbUsuario user)
         {
             string mensaje = new UsuariosCLS().Iniciar_Sesion(user);
             if (mensaje != "Correcto") {
@@ -60,6 +66,10 @@ namespace BiblioWeb.Controllers
             return RedirectToAction("Menu");
             
         }
+        public async Task<IActionResult> Logout() {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
         [HttpGet]
         public IActionResult Registrar() {
             ViewBag.Error = "";
@@ -75,6 +85,7 @@ namespace BiblioWeb.Controllers
         public IActionResult Carrito() {
             ViewBag.Precio = new UsuariosCLS().PrecioTotal();
             ViewBag.ListaID = new UsuariosCLS().GetIdPedido();
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
             return View(new UsuariosCLS().MostrarPedidos());
         }
         [HttpPost]
@@ -91,8 +102,44 @@ namespace BiblioWeb.Controllers
         }
         [Authorize(Roles = "Usuario")]
         public IActionResult Menu() {
-
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
             return View(new UsuariosCLS().MostrarLibros());
+        }
+        [HttpGet]
+        [Authorize(Roles = "Usuario")]
+        public IActionResult Vender() {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "Usuario")]
+        public IActionResult Vender(TbLibro librio, IFormFile image) {
+            string wwwRootPath = hostEnvironment.WebRootPath;
+            string extension = Path.GetExtension(image.FileName);
+            string fileName = DateTime.Now.ToString("yymmssfff");
+            string path = Path.Combine(wwwRootPath + "/img/", fileName + extension);
+            string ruta = "/img/" + fileName + extension;
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                image.CopyTo(fileStream);
+            }
+            new UsuariosCLS().AgregarLibro(librio, ruta);
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
+            return View();
+        }        
+        [HttpGet]
+        [Authorize(Roles = "Usuario")]
+        public IActionResult UserConfig() {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
+            return View(new UsuariosCLS().infoCliente());
+        }
+        [HttpPost]
+        [Authorize(Roles = "Usuario")]
+        public IActionResult UserConfig(TbCliente cliente, TbUsuario usuario)
+        {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
+            new UsuariosCLS().ModificarCLiente(cliente, usuario);
+            return View(new UsuariosCLS().infoCliente());
         }
     }
 }

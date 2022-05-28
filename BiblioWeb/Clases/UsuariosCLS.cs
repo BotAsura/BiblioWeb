@@ -81,6 +81,7 @@ namespace BiblioWeb.Clases
                     libro.Add(Libro.Precio);
                     libro.Add(Libro.Ruta);
                     libro.Add(Libro.IdLibro.ToString());
+                    libro.Add(Libro.Descripcion);
                 }
                 return libro;
 
@@ -220,6 +221,85 @@ namespace BiblioWeb.Clases
                 {
                     return "Su compra no se pudo realizar";
                 }
+            }
+        }
+        public string AgregarLibro(TbLibro libro, string ruta) {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
+                TbLibro setLibro = new TbLibro();
+
+                setLibro.Titulo = libro.Titulo;
+                setLibro.Autor = libro.Autor;
+                setLibro.Genero = libro.Genero;
+                setLibro.Precio = libro.Precio;
+                setLibro.Descripcion = libro.Descripcion;
+                setLibro.Cantidad = libro.Cantidad;
+                setLibro.Ruta = ruta;
+
+                try
+                {
+                    db.TbLibro.Add(setLibro);
+
+                    db.SaveChanges();
+
+                    return "Todo Bien";
+                }
+                catch (System.Exception)
+                {
+                    return "Todo Mal";                    
+                }
+
+            }
+        }
+        public List<TbCliente> infoCliente() {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
+                var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
+                if (getUsuario != null)
+                {
+                    var getInfo = db.TbCliente.Where(x => x.IdUsuario == getUsuario.IdUsuario).ToList();
+                    return getInfo;
+                }
+                return null;
+            }        
+        }
+        public string ModificarCLiente(TbCliente cliente, TbUsuario usuario) {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
+                var getUsuario = db.TbUsuario.Where(x => x.Correo == usuario.Correo).FirstOrDefault();
+                if (getUsuario != null)
+                {
+                    TbUsuario setUsuario = getUsuario;
+
+                    setUsuario.Contraseña = usuario.Contraseña;
+
+                    try
+                    {
+                        db.TbUsuario.Update(setUsuario);
+                        db.SaveChanges();
+
+                        var getCliente = db.TbCliente.Where(x => x.IdUsuario == getUsuario.IdUsuario).FirstOrDefault();
+                        if (getCliente != null)
+                        {
+                            TbCliente setCliente = getCliente;
+
+                            setCliente.Nombre = cliente.Nombre;
+                            setCliente.ApellidoPat = cliente.ApellidoPat;
+                            setCliente.ApellidoMat = cliente.ApellidoMat;
+                            setCliente.Colonia = cliente.Colonia;
+                            setCliente.Calle = cliente.Calle;
+                            setCliente.Numero = cliente.Numero;
+
+                            db.TbCliente.Update(setCliente);
+                            db.SaveChanges();
+
+                            return "Se actualizo tu informacion con exito";
+                        }
+                    }
+                    catch (System.Exception)
+                    {
+
+                        return "No se pudo actualizar tu informacion";
+                    }
+                }
+                return "No se pudo actualizar tu informacion";
             }
         }
     }

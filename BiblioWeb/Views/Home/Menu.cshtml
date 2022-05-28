@@ -1,6 +1,6 @@
 ﻿@model List<TbLibro>
 @{
-    Layout = null;
+    Layout = null;    
 }
 
 <!DOCTYPE html>
@@ -30,9 +30,9 @@
     <ul>
         <li><a asp-action="Menu" class="active text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
         <li><a asp-action="Carrito" class="text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
-        <li><a href="Vender.html" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
-        <li><a href="User.html" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>Username</a></li>
-        <li><a href="LogIn.html" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
+        <li><a asp-action="Vender" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+        <li><a asp-action="UserConfig" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>@ViewBag.Usuario</a></li>
+        <li><a asp-action="Logout" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
     </ul>
 </nav>
 
