@@ -49,9 +49,15 @@
             <h4><ion-icon name="document-lock"></ion-icon>Confirmar: </h4>
             <input type="password" name="contraConf" id="contraConf" placeholder="contraseña" required class="preInput">
             <br><br><br>
-            <button type="submit" class="preButton" id="open-popup-btn" onclick="Pop();">INICIAR</button>
+            <button type="submit" class="preButton" id="open-popup-btn" onclick="Registro()">INICIAR</button>
             <br><br><br>
         </form>
     </section>    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function Registro(){
+            swal("Registro completado", "Dirigete al login para iniciar sesion", "success");
+        }        
+    </script>
 </body>
 </html>
