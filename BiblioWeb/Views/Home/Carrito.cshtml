@@ -47,7 +47,7 @@
                 <h2>@item.Autor</h2>
                 <h4>@item.Genero</h4>
                 <h2>@item.Precio</h2>   
-                <input type="hidden" value="@item.IdLibro" name="books[@i]" />
+                <input class="btn btn-danger" onclick="Elimanar(@ViewBag.ListaID[i])" type="button" value="Eliminar" id="Eliminar"/>
             </a>
             i++;
         }    
@@ -55,12 +55,20 @@
     <hr><br>
     <div class="carrito">
         <div class="buttonCarrito">
-            <h2><ion-icon name="card"></ion-icon>Total a Pagar: $1500.00</h2>
-            <form asp-action="Carrito" asp-controller="Home" method="post">
-            <button type="submit" class="preButton"><ion-icon name="logo-paypal"></ion-icon>  PAGAR</button>
+            <h2><ion-icon name="card"></ion-icon>Total a Pagar: @ViewBag.Precio</h2>
+            <form asp-action="Compra" asp-controller="Home" method="post">
+                <button type="submit" class="preButton"><ion-icon name="logo-paypal"></ion-icon> PAGAR</button>
             </form>
         </div>
-    </div>            
-    
+    </div>          
+    <form asp-action="Eliminar"  asp-controller="Home" id="frmEliminar">
+        <input type="hidden" id="idEliminarPedido" name="idEliminarPedido" />
+    </form>
+    <script>
+        function Elimanar(id){            
+            document.getElementById("idEliminarPedido").value = id;            
+            frmEliminar.submit();
+        }
+    </script>
 </body>
 </html>

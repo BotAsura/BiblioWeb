@@ -31,7 +31,7 @@ namespace BiblioWeb.Controllers
         [HttpGet]
         public IActionResult Login() { 
             return View();
-        }
+        }   
         [HttpPost]
         public IActionResult Login(TbUsuario user)
         {
@@ -54,12 +54,19 @@ namespace BiblioWeb.Controllers
         }
         [HttpGet]
         public IActionResult Carrito() {
+            ViewBag.Precio = new UsuariosCLS().PrecioTotal();
+            ViewBag.ListaID = new UsuariosCLS().GetIdPedido();
             return View(new UsuariosCLS().MostrarPedidos());
         }
         [HttpPost]
-        public IActionResult Carrito(string[] books) {
-            new UsuariosCLS().Comprar(books);
-            return View();
+        public IActionResult Eliminar(int idEliminarPedido) {
+            new UsuariosCLS().EliminarPedido(idEliminarPedido);
+            return RedirectToAction("Carrito");
+        }
+        [HttpPost]
+        public IActionResult Compra() {
+            new UsuariosCLS().Comprar();
+            return RedirectToAction("Carrito");
         }
         
         public IActionResult Menu() {

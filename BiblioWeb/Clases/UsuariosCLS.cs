@@ -7,7 +7,6 @@ namespace BiblioWeb.Clases
     public class UsuariosCLS
     {
         private static string usuario;
-
         public string Usuario { get => usuario; set => usuario = value; }
 
         public string Registrar(TbUsuario user, TbCliente cliente) {
@@ -55,7 +54,6 @@ namespace BiblioWeb.Clases
                 }
             }
         }
-
         public string Iniciar_Sesion(TbUsuario user) {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
                 var getUser = db.TbUsuario.Where(x => x.Correo == user.Correo.ToLower() && x.Contraseña == user.Contraseña).FirstOrDefault();
@@ -66,13 +64,11 @@ namespace BiblioWeb.Clases
                 return "Contraseña y/o Usuario Incorrecto";
             }
         }
-
         public List<TbLibro> MostrarLibros() {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
                 return db.TbLibro.ToList();
             }
         }
-
         public List<string> MostrarUnLibro(int id) {
             using (BiblioWebDbContext db = new BiblioWebDbContext())
             {
@@ -90,7 +86,6 @@ namespace BiblioWeb.Clases
 
             }
         }
-
         public string RegistrarPedido(int id) {
             using (BiblioWebDbContext db = new BiblioWebDbContext())
             {
@@ -101,6 +96,7 @@ namespace BiblioWeb.Clases
                 {
                     setPedido.IdUsuario = getUsuario.IdUsuario;
                     setPedido.IdLibro = id;
+                    setPedido.Visibilidad = true;
 
                     db.TbPedido.Add(setPedido);
 
@@ -111,7 +107,6 @@ namespace BiblioWeb.Clases
                 return "Todo Mal";
             }
         }
-
         public List<TbLibro> MostrarPedidos() {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
                 var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
@@ -119,22 +114,112 @@ namespace BiblioWeb.Clases
                 if (getUsuario != null)
                 {
                     var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario).ToList();
-                
+
                     for (int i = 0; i < getPedidos.Count; i++)
                     {
-                        var Libro = db.TbLibro.Where(x => x.IdLibro == getPedidos[i].IdLibro).First();
+                        var Libro = db.TbLibro.Where(x => x.IdLibro == getPedidos[i].IdLibro && getPedidos[i].Visibilidad).FirstOrDefault();
 
-                        getLibrosPedidos.Add(Libro);
+                        if (Libro != null)
+                        {
+                            getLibrosPedidos.Add(Libro);
+                        }
                     }
 
                 }
-                return getLibrosPedidos;                
+                return getLibrosPedidos;
             }
         }
+        public List<int> GetIdPedido() {
+            using (BiblioWebDbContext db = new BiblioWebDbContext()){
+                List<int> lista = new List<int>();
+                var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
+                if (getUsuario != null){
+                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario && x.Visibilidad == true).ToList();                    
+                        for (int i = 0; i < getPedidos.Count; i++)
+                        {
+                            lista.Add(getPedidos[i].IdPedido);
+                        }                    
+                }
+                return lista;
+            }
+        }
+        public string EliminarPedido(int idLibro)
+        {
+            using (BiblioWebDbContext db = new BiblioWebDbContext())
+            {
+                var getPedido = db.TbPedido.Where(x => x.IdPedido == idLibro).FirstOrDefault();
 
-        public string Comprar(string[] books) {
+                if (getPedido != null)
+                {
+                    try
+                    {
+                        db.TbPedido.Remove(getPedido);
+
+                        db.SaveChanges();
+
+                        return "Pedido Eliminado con exito";
+                    }
+                    catch (System.Exception)
+                    {
+
+                        return "El pedido no se pudo eliminar";
+                    }
+                }
+                return "El pedido no se pudo eliminar";
+            }
+        }
+        public string PrecioTotal() {
+            using (BiblioWebDbContext db = new BiblioWebDbContext())
+            {
+                float total = 0.0f;
+                var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
+                if (getUsuario != null)
+                {
+                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario ).ToList();
+
+                    for (int i = 0; i < getPedidos.Count; i++)
+                    {
+                        if (getPedidos[i].Visibilidad)
+                        {
+                            var getBook = db.TbLibro.Where(x => x.IdLibro == getPedidos[i].IdLibro).FirstOrDefault();
+                            total += float.Parse(getBook.Precio.Substring(1)); 
+                        }
+                    }
+                }
+                return "$" + total.ToString();
+            }        
+        }            
+        public string Comprar() {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
-                return "Hola";
+                try
+                {
+                    var getIdUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
+
+                    if (getIdUsuario != null)
+                    {
+                        var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getIdUsuario.IdUsuario).ToList();
+                        for (int i = 0; i < getPedidos.Count; i++)
+                        {
+                            getPedidos[i].Visibilidad = false;
+
+                            TbVentas setVenta = new TbVentas();
+
+                            setVenta.Fecha = System.DateTime.Now;
+                            setVenta.IdPedido = getPedidos[i].IdPedido;
+
+                            db.TbPedido.Update(getPedidos[i]);  
+                            db.TbVentas.Add(setVenta);
+
+                            db.SaveChanges();
+                        }
+                        return "Compra realizada con éxito";
+                    }
+                    return "Su compra no se pudo realizar";
+                }
+                catch (System.Exception)
+                {
+                    return "Su compra no se pudo realizar";
+                }
             }
         }
     }

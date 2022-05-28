@@ -17,6 +17,7 @@ namespace BiblioWeb.Models
         public int IdPedido { get; set; }
         public int IdLibro { get; set; }
         public int IdUsuario { get; set; }
+        public bool Visibilidad { get; set; }
 
         public virtual TbLibro IdLibroNavigation { get; set; }
         public virtual TbUsuario IdUsuarioNavigation { get; set; }

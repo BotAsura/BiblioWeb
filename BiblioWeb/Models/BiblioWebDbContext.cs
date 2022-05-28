@@ -38,7 +38,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbCliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__TbClient__3DD0A8CB171AA1DD");
+                    .HasName("PK__TbClient__3DD0A8CB29B9818E");
 
                 entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
 
@@ -70,7 +70,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbLibro>(entity =>
             {
                 entity.HasKey(e => e.IdLibro)
-                    .HasName("PK__TbLibro__FFFE464016D23201");
+                    .HasName("PK__TbLibro__FFFE464094EC734A");
 
                 entity.Property(e => e.IdLibro).HasColumnName("Id_Libro");
 
@@ -98,7 +98,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbPedido>(entity =>
             {
                 entity.HasKey(e => e.IdPedido)
-                    .HasName("PK__TbPedido__A5D0013973480AA3");
+                    .HasName("PK__TbPedido__A5D0013988448219");
 
                 entity.Property(e => e.IdPedido).HasColumnName("Id_Pedido");
 
@@ -122,7 +122,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__TbUsuari__63C76BE2371A737F");
+                    .HasName("PK__TbUsuari__63C76BE26267DAE7");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
@@ -138,7 +138,7 @@ namespace BiblioWeb.Models
             modelBuilder.Entity<TbVentas>(entity =>
             {
                 entity.HasKey(e => e.IdVentas)
-                    .HasName("PK__TbVentas__464C581F526D3EAD");
+                    .HasName("PK__TbVentas__464C581F8F6721ED");
 
                 entity.Property(e => e.IdVentas).HasColumnName("Id_Ventas");
 
