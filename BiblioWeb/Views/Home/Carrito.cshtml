@@ -56,7 +56,7 @@
         <div class="buttonCarrito">
             <h2><ion-icon name="card"></ion-icon>Total a Pagar: @ViewBag.Precio</h2>
             <form asp-action="Compra" asp-controller="Home" method="post">
-                <button type="submit" class="preButton"><ion-icon name="logo-paypal"></ion-icon> PAGAR</button>
+                <button onclick="Comprar()" type="submit" class="preButton"><ion-icon name="logo-paypal"></ion-icon> PAGAR</button>
             </form>
         </div>
     </div>          
@@ -67,6 +67,15 @@
         function Elimanar(id){            
             document.getElementById("idEliminarPedido").value = id;            
             frmEliminar.submit();
+        }
+        function Comprar() {
+            var art = document.getElementById("Eliminar").value;
+
+            if (art == 0) {
+                swal("Sin articulos", "Añade articulos a tu carrito", "error");
+            } else {
+                swal("EXITO", "Compra en Proceso", "success");
+            }
         }
     </script>
 </body>

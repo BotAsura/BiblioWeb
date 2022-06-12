@@ -1,6 +1,7 @@
-﻿
+﻿@model List<TbLibro>
 @{
     Layout = null;
+    int i = 0;
 }
 
 <!DOCTYPE html>
@@ -13,13 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/project.css">
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <style>
-    body {
-        background-image: url(/img/bg.png);
-    }    
-    </style>
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -27,34 +27,24 @@
         </label>
         <label class="logo">BIBLIOWEB</label>
         <ul>
-            <li><a asp-action="Menu" asp-controller="Home" class="active text-decoration-none">Inicio</a></li>
-            <li><a asp-action="" asp-controller="Home" class="text-decoration-none">Carrito</a></li>
-            <li><a asp-action="Login" asp-controller="Home" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a asp-action="Registrar" asp-controller="Home" class="text-decoration-none">Registrarse</a></li>
+            <li><a asp-action="Menu" class=" text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
+            <li><a asp-action="Carrito" class="active text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
+            <li><a asp-action="Vender" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+            <li><a asp-action="UserConfig" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>@ViewBag.Usuario</a></li>
+            <li><a asp-action="Logout" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
         </ul>
     </nav>
-    <br><br><br>
-    <div class="formatContainer">
-        <div class="formato">
-            <h2>Introducción</h2>
-            <br>
-            Este es un proyecto dedicado a:
-            <br><br>
-            <div class="blockContainer">
-                <div class="blocks">
-                    Facilitar la compra y venta de libros para impulsar la lectura tanto para los niños, jovenes y adultos.
-                </div>
-                <br><br>
-                <div class="blocks">
-                    Buscar interesados como librerías en México para poder comercializar el software.
-                </div>
-                <br><br>
-                <div class="blocks">
-                    En caso de que el proyecto sea un éxito poder modificar el software a conveniencia del interesado.
-                </div>
+    <br>
+    <h2><ion-icon name="shapes"></ion-icon>Introduccion</h2>
+    <hr><br>
+        <div class="staticContainer">
+            <div class="staticText">
+                Las librerías han sufrido un decremento en sus ventas tanto por la situación que estamos sufriendo hoy en día como el cambio de tiempos, las ventas en línea han aumentado en las últimas décadas, hoy en día la mayoría de las personas prefieren hacer compras desde la comodidad de su hogar, y están dejando de ir a librerías.
+                Estaremos hablando de nuestra idea de negocio llamado BiblioWeb la cual busca ayudar a las librerías para que puedan vender sus libros a través de una página evitando así que los usuarios tengan que ir. Se busca llegar a un acuerdo para tener los mejores productos junto con los mejores precios.
+                También se busca que cualquier usuario pueda vender sus libros, ya sean hechos por ellos mismos o libros con los que cuenten.
+                Nuestra visión es poder crear un impacto entre los usuarios para que compren más libros.
             </div>
+            <br>
         </div>
-    </div>
-    <br><br><br>
 </body>
 </html>

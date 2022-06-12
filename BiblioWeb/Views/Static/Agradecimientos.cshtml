@@ -1,10 +1,11 @@
-﻿
+﻿@model List<TbLibro>
 @{
     Layout = null;
+    int i = 0;
 }
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="esp">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/project.css">
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <style>
-    body {
-        background-image: url(/img/bg.png);
-    }    
-    </style>
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -27,16 +27,18 @@
         </label>
         <label class="logo">BIBLIOWEB</label>
         <ul>
-            <li><a asp-action="Menu" asp-controller="Home" class="active text-decoration-none">Inicio</a></li>
-            <li><a asp-action="" asp-controller="Home" class="text-decoration-none">Carrito</a></li>
-            <li><a asp-action="Login" asp-controller="Home" class="text-decoration-none">Iniciar Sesion</a></li>
-            <li><a asp-action="Registrar" asp-controller="Home" class="text-decoration-none">Registrarse</a></li>
+            <li><a asp-action="Menu" class=" text-decoration-none navA"><ion-icon name="grid"></ion-icon>Inicio</a></li>
+            <li><a asp-action="Carrito" class="active text-decoration-none navA"><ion-icon name="cart"></ion-icon>Carrito</a></li>
+            <li><a asp-action="Vender" class="text-decoration-none navA"><ion-icon name="pricetags"></ion-icon>Vender</a></li>
+            <li><a asp-action="UserConfig" class="text-decoration-none navA"><ion-icon name="person"></ion-icon>@ViewBag.Usuario</a></li>
+            <li><a asp-action="Logout" class="text-decoration-none navA"><ion-icon name="exit"></ion-icon>Salir Sesion</a></li>
         </ul>
     </nav>
-    <div class="formatContainer">
-        <br><br><br>
-        <div class="formato">
-            <h2>AGRADECIMIENTOS</h2>
+    <br>
+    <h2><ion-icon name="thumbs-up"></ion-icon>   Agradecimientos   <ion-icon name="thumbs-up"></ion-icon></h2>
+    <hr><br>
+    <div class="staticContainer">
+        <div class="staticText">
             Agradecemos a los profesores por darnos las herramientas durante estos 2 años que hicieron posible el éxito de este proyecto y sin duda nos encamino a un buen futuro.
             <br><br>
             Agradecimientos especiales a Carlos Briseño por ayudarnos con el diseño, base de datos y el desarrollo web del proyecto.
@@ -46,15 +48,16 @@
             Igualmente, Alfredo Campos quien nos ayudo al cableado y conexión de los servidores.
             <br><br>
             Y por último a Fernando Martínez, con la asesoría y documentación del proyecto
-            <br><br>
-            Este proyecto está dedicado a nuestras familias por apoyarnos a nuestros estudios
         </div>
-        <br><br><br>
-        <div class="formato">
-            <h2>DEDICATORIAS</h2>
-            Este proyecto está dedicado a nuestras familias por apoyarnos a nuestros estudios
-        </div>
-        <br><br><br>
     </div>
+    <br>
+    <h2><ion-icon name="happy"></ion-icon>   Dedicatorias   <ion-icon name="happy"></ion-icon></h2>
+    <hr><br>
+    <div class="staticContainer">
+        <div class="staticText">
+            Este proyecto está dedicado a nuestras familias por apoyarnos a nuestros estudios
+        </div>
+    </div>
+    <br><br><br><br><br>
 </body>
 </html>

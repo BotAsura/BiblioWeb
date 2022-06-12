@@ -43,5 +43,21 @@
             </form>
         </div>
     </section>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function Login() {
+            var mail = document.getElementById("email").value;
+            var passw = document.getElementById("contra").value;
+
+            var gmail = (mail.substr(-9));
+            if (mail = "") {
+                swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
+            } else if (passw = "") {
+                swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
+            } else if (!(gmail == "gmail.com")) {
+                swal("Correo No Valido", "Asegurate de que pusiste un correo valido: terminacion gmail.com", "error");
+            } 
+        }
+    </script>
 </body>
 </html>
