@@ -97,8 +97,8 @@ namespace BiblioWeb.Controllers
         [HttpPost]
         [Authorize(Roles = "Usuario")]
         public IActionResult Compra() {
-            new UsuariosCLS().Comprar();
-            return RedirectToAction("Carrito");
+            
+            return RedirectToAction("Ticket");
         }
         [HttpGet]
         [Authorize(Roles = "Usuario")]
@@ -140,6 +140,19 @@ namespace BiblioWeb.Controllers
         public IActionResult UserConfig() {
             ViewBag.Usuario = new UsuariosCLS().Usuario;
             return View(new UsuariosCLS().infoCliente());
+        }
+        [Authorize(Roles = "Usuario")]
+        public IActionResult Ticket() {
+            UsuariosCLS obj = new UsuariosCLS();
+            obj.Comprar();
+            List<TicketCLS> list = obj.Ticket();
+            if (list.Count != 0)
+            {                
+                ViewBag.Nombre = list[0].Nombre;
+                ViewBag.Fecha = list[0].Fecha;
+                return View(list); 
+            }
+            return RedirectToAction("Carrito");
         }
         [HttpPost]
         [Authorize(Roles = "Usuario")]

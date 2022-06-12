@@ -1,0 +1,84 @@
+﻿@using BiblioWeb.Clases
+@model List<TicketCLS>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+</head>
+<body>
+    <header>
+        <h1>
+            BiblioWeb
+        </h1>
+        
+    </header>
+    <hr/>
+    <main>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <h2>Nombre: @ViewBag.Nombre</h2>
+                    <span class="span">Fecha: @ViewBag.Fecha</span>
+                    <br>  
+                </div>
+            </div>
+            <article class="table-wrapper">  
+        
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Titulo
+                            </th>                            
+                            <th>
+                                Autor
+                            </th>
+                            <th>
+                                Genero
+                            </th>
+                            <th>
+                                Precio
+                            </th>                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                       {
+                            <tr>
+                                 <th>
+                                     @item.Titulo
+                                 </th>
+                                 <th>
+                                     @item.Autor
+                                 </th>
+                                 <th>
+                                     @item.Genero
+                                 </th>
+                                 <th>
+                                     @item.Precio
+                                 </th>
+
+                            </tr>
+                       }
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
+
+<script>
+    window.onload = function() {
+        if (window.print) { 
+          window.print();
+        }
+    }
+</script>

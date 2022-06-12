@@ -6,7 +6,7 @@ namespace BiblioWeb.Clases
 {
     public class UsuariosCLS
     {
-        private static string usuario;
+        private static string usuario;        
         public string Usuario { get => usuario; set => usuario = value; }
 
         public string Registrar(TbUsuario user, TbCliente cliente) {
@@ -200,9 +200,7 @@ namespace BiblioWeb.Clases
                     {
                         var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getIdUsuario.IdUsuario).ToList();
                         for (int i = 0; i < getPedidos.Count; i++)
-                        {
-                            getPedidos[i].Visibilidad = false;
-
+                        {                            
                             TbVentas setVenta = new TbVentas();
 
                             setVenta.Fecha = System.DateTime.Now;
@@ -328,6 +326,47 @@ namespace BiblioWeb.Clases
 
                 return null;
             }
+        }
+        public List<TicketCLS> Ticket() {
+            using (BiblioWebDbContext db = new BiblioWebDbContext())
+            {
+                List<TicketCLS> listTicket = new List<TicketCLS>();
+                var getNombre = db.TbUsuario.Where(x => x.Correo == Usuario).First();
+                var getPedido = db.TbPedido.Where(x =>
+                    x.IdUsuario == getNombre.IdUsuario && x.Visibilidad).ToList();
+                var getCliente = db.TbCliente.Where(x => x.IdUsuario == getNombre.IdUsuario).First();
+
+
+                for (int i = 0; i < getPedido.Count; i++)
+                {                    
+
+                    var getVenta = db.TbVentas.Where(x => 
+                        x.IdPedido == getPedido[i].IdPedido).First();
+
+                    var getLibro = db.TbLibro.Where(x => 
+                        x.IdLibro == getPedido[i].IdLibro).First();
+
+                    listTicket.Add(new TicketCLS()
+                    {
+                        Nombre = getCliente.Nombre,
+                        Fecha = getVenta.Fecha.ToString(),
+                        Titulo = getLibro.Titulo,
+                        Autor = getLibro.Autor,
+                        Genero = getLibro.Genero,
+                        Precio = getLibro.Precio
+                    }) ;
+                }
+                for (int i = 0; i < getPedido.Count; i++)
+                {
+                    getPedido[i].Visibilidad = false;
+
+                    db.TbPedido.Update(getPedido[i]);
+                    db.SaveChanges();
+                }
+                
+
+                return listTicket;
+            }            
         }
     }
 }

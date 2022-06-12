@@ -29,7 +29,7 @@ namespace BiblioWeb.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:biblioweb.database.windows.net,1433;Initial Catalog=BiblioWeb;Persist Security Info=False;User ID=administrador;Password=BiblioWeb1.;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Data Source=ASURA;Initial Catalog=BiblioWebDb;Integrated Security=True");
             }
         }
 

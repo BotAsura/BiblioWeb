@@ -38,7 +38,9 @@
     <h2><ion-icon name="cart"></ion-icon>   Carrito</h2>
     <hr><br>
     <div class="page-container">
-        @foreach (var item in Model)
+    @if (Model.Count != 0)
+    {
+                @foreach (var item in Model)
         {                        
             <a  class="product-container text-decoration-none">
                 <img src="@item.Ruta">
@@ -50,11 +52,20 @@
             </a>
             i++;
         }    
+    }else
+    {
+            <h2>
+                Lo sentimos aun no has agregado ningun libro a tu carrito :(.
+            </h2>
+    }
     </div>
     <hr><br>
     <div class="carrito">
         <div class="buttonCarrito">
-            <h2><ion-icon name="card"></ion-icon>Total a Pagar: @ViewBag.Precio</h2>
+            @if (@ViewBag.Precio != "$0")
+            {
+                <h2><ion-icon name="card"></ion-icon>Total a Pagar: @ViewBag.Precio</h2>
+            }
             <form asp-action="Compra" asp-controller="Home" method="post">
                 <button onclick="Comprar()" type="submit" class="preButton"><ion-icon name="logo-paypal"></ion-icon> PAGAR</button>
             </form>
