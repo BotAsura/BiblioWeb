@@ -78,7 +78,7 @@ namespace BiblioWeb.Controllers
         [HttpPost]
         public IActionResult Registrar(TbUsuario user,TbCliente cliente) {
             ViewBag.Error = new UsuariosCLS().Registrar(user, cliente);
-            return View();
+            return RedirectToAction("Login");
         }
         [HttpGet]
         [Authorize(Roles = "Usuario")]
@@ -100,10 +100,18 @@ namespace BiblioWeb.Controllers
             new UsuariosCLS().Comprar();
             return RedirectToAction("Carrito");
         }
+        [HttpGet]
         [Authorize(Roles = "Usuario")]
         public IActionResult Menu() {
             ViewBag.Usuario = new UsuariosCLS().Usuario;
             return View(new UsuariosCLS().MostrarLibros());
+        }
+        [HttpPost]
+        [Authorize(Roles = "Usuario")]
+        public IActionResult Menu(string palabraClave)
+        {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
+            return View(new UsuariosCLS().Filtro(palabraClave));
         }
         [HttpGet]
         [Authorize(Roles = "Usuario")]

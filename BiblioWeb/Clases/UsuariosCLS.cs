@@ -131,15 +131,15 @@ namespace BiblioWeb.Clases
             }
         }
         public List<int> GetIdPedido() {
-            using (BiblioWebDbContext db = new BiblioWebDbContext()){
+            using (BiblioWebDbContext db = new BiblioWebDbContext()) {
                 List<int> lista = new List<int>();
                 var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
-                if (getUsuario != null){
-                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario && x.Visibilidad == true).ToList();                    
-                        for (int i = 0; i < getPedidos.Count; i++)
-                        {
-                            lista.Add(getPedidos[i].IdPedido);
-                        }                    
+                if (getUsuario != null) {
+                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario && x.Visibilidad == true).ToList();
+                    for (int i = 0; i < getPedidos.Count; i++)
+                    {
+                        lista.Add(getPedidos[i].IdPedido);
+                    }
                 }
                 return lista;
             }
@@ -176,20 +176,20 @@ namespace BiblioWeb.Clases
                 var getUsuario = db.TbUsuario.Where(x => x.Correo == Usuario).FirstOrDefault();
                 if (getUsuario != null)
                 {
-                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario ).ToList();
+                    var getPedidos = db.TbPedido.Where(x => x.IdUsuario == getUsuario.IdUsuario).ToList();
 
                     for (int i = 0; i < getPedidos.Count; i++)
                     {
                         if (getPedidos[i].Visibilidad)
                         {
                             var getBook = db.TbLibro.Where(x => x.IdLibro == getPedidos[i].IdLibro).FirstOrDefault();
-                            total += float.Parse(getBook.Precio.Substring(1)); 
+                            total += float.Parse(getBook.Precio.Substring(1));
                         }
                     }
                 }
                 return "$" + total.ToString();
-            }        
-        }            
+            }
+        }
         public string Comprar() {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
                 try
@@ -208,7 +208,7 @@ namespace BiblioWeb.Clases
                             setVenta.Fecha = System.DateTime.Now;
                             setVenta.IdPedido = getPedidos[i].IdPedido;
 
-                            db.TbPedido.Update(getPedidos[i]);  
+                            db.TbPedido.Update(getPedidos[i]);
                             db.TbVentas.Add(setVenta);
 
                             db.SaveChanges();
@@ -230,7 +230,7 @@ namespace BiblioWeb.Clases
                 setLibro.Titulo = libro.Titulo;
                 setLibro.Autor = libro.Autor;
                 setLibro.Genero = libro.Genero;
-                setLibro.Precio = libro.Precio;
+                setLibro.Precio = "$" + libro.Precio + ".00";
                 setLibro.Descripcion = libro.Descripcion;
                 setLibro.Cantidad = libro.Cantidad;
                 setLibro.Ruta = ruta;
@@ -245,7 +245,7 @@ namespace BiblioWeb.Clases
                 }
                 catch (System.Exception)
                 {
-                    return "Todo Mal";                    
+                    return "Todo Mal";
                 }
 
             }
@@ -259,7 +259,7 @@ namespace BiblioWeb.Clases
                     return getInfo;
                 }
                 return null;
-            }        
+            }
         }
         public string ModificarCLiente(TbCliente cliente, TbUsuario usuario) {
             using (BiblioWebDbContext db = new BiblioWebDbContext()) {
@@ -300,6 +300,33 @@ namespace BiblioWeb.Clases
                     }
                 }
                 return "No se pudo actualizar tu informacion";
+            }
+        }
+        public List<TbLibro> Filtro(string palabraClave) {
+            using (BiblioWebDbContext db = new BiblioWebDbContext())
+            {
+                var Titulo = db.TbLibro.Where(x => x.Titulo.Contains(palabraClave)).ToList();
+
+                if (Titulo.Count != 0)
+                {
+                    return Titulo;
+                }
+
+                var Autor = db.TbLibro.Where(x => x.Autor.Contains(palabraClave)).ToList();
+                
+                if (Autor.Count != 0)
+                {
+                    return Autor;
+                }
+
+                var Genero = db.TbLibro.Where(x => x.Genero.Contains(palabraClave)).ToList();
+
+                if (Genero.Count != 0)
+                {
+                    return Genero;
+                }
+
+                return null;
             }
         }
     }
