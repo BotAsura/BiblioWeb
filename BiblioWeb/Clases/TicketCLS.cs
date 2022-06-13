@@ -8,5 +8,6 @@
         public string Autor { get; set; }
         public string Genero { get; set; }
         public string Precio { get; set; }
+        public string Total { get; set; }
     }
 }

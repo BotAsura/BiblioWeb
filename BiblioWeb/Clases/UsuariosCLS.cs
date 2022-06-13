@@ -1,4 +1,5 @@
 ﻿using BiblioWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -330,6 +331,7 @@ namespace BiblioWeb.Clases
         public List<TicketCLS> Ticket() {
             using (BiblioWebDbContext db = new BiblioWebDbContext())
             {
+                float ntotal = 0;
                 List<TicketCLS> listTicket = new List<TicketCLS>();
                 var getNombre = db.TbUsuario.Where(x => x.Correo == Usuario).First();
                 var getPedido = db.TbPedido.Where(x =>
@@ -346,6 +348,10 @@ namespace BiblioWeb.Clases
                     var getLibro = db.TbLibro.Where(x => 
                         x.IdLibro == getPedido[i].IdLibro).First();
 
+                    string aux = getLibro.Precio.Substring(1);
+
+                    ntotal += float.Parse(aux);
+
                     listTicket.Add(new TicketCLS()
                     {
                         Nombre = getCliente.Nombre,
@@ -353,7 +359,8 @@ namespace BiblioWeb.Clases
                         Titulo = getLibro.Titulo,
                         Autor = getLibro.Autor,
                         Genero = getLibro.Genero,
-                        Precio = getLibro.Precio
+                        Precio = getLibro.Precio,
+                        Total = "0"
                     }) ;
                 }
                 for (int i = 0; i < getPedido.Count; i++)
@@ -363,7 +370,8 @@ namespace BiblioWeb.Clases
                     db.TbPedido.Update(getPedido[i]);
                     db.SaveChanges();
                 }
-                
+
+                listTicket[0].Total = "$" + ntotal.ToString();
 
                 return listTicket;
             }            

@@ -29,8 +29,8 @@ namespace BiblioWeb.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "Usuario")]
-        public IActionResult Ventas(int id) { 
-
+        public IActionResult Ventas(int id) {
+            ViewBag.Usuario = new UsuariosCLS().Usuario;
             return View(new UsuariosCLS().MostrarUnLibro(id));
         }
         [HttpPost]
@@ -147,7 +147,8 @@ namespace BiblioWeb.Controllers
             obj.Comprar();
             List<TicketCLS> list = obj.Ticket();
             if (list.Count != 0)
-            {                
+            {              
+                ViewBag.Ticket = list[0].Total;
                 ViewBag.Nombre = list[0].Nombre;
                 ViewBag.Fecha = list[0].Fecha;
                 return View(list); 
