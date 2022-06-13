@@ -16,40 +16,40 @@
 </head>
 <body>
     <section class="registerContainer">
-        <form asp-action="Registrar" asp-controller="Home" method="post" class="register">
+        <form asp-action="Registrar" asp-controller="Home" method="post" class="register" id="frmRegistrar">
             <ion-icon name="book"></ion-icon>BiblioWeb
             <br><br>
             <h2>Registro</h2>
             <hr>
             <br><br>
             <h4><ion-icon name="person"></ion-icon>Nombre: </h4>
-            <input type="text" name="Nombre" id="nombre" placeholder="nombre" required class="preInput">
+            <input type="text" name="Nombre" id="nombre" placeholder="nombre" class="preInput">
             <br><br>
             <h4><ion-icon name="bookmark"></ion-icon>Apellido Paterno: </h4>
-            <input type="text" name="ApellidoPat" id="apellidoP" placeholder="apellidoP" required class="preInput">
+            <input type="text" name="ApellidoPat" id="apellidoP" placeholder="apellidoP" class="preInput">
             <br><br>
             <h4><ion-icon name="bookmarks"></ion-icon>Apellido Materno: </h4>
-            <input type="text" name="ApellidoMat" id="apellidoM" placeholder="apellidoM" required class="preInput">
+            <input type="text" name="ApellidoMat" id="apellidoM" placeholder="apellidoM"  class="preInput">
             <br><br>
             <h4><ion-icon name="paper-plane"></ion-icon>Colonia: </h4>
-            <input type="text" name="Colonia" id="colonia" placeholder="colonia" required class="preInput">
+            <input type="text" name="Colonia" id="colonia" placeholder="colonia"  class="preInput">
             <br><br>
             <h4><ion-icon name="car"></ion-icon>Calle: </h4>
-            <input type="text" name="Calle" id="calle" placeholder="calle" required class="preInput">
+            <input type="text" name="Calle" id="calle" placeholder="calle"  class="preInput">
             <br><br>
             <h4><ion-icon name="clipboard"></ion-icon>Numero: </h4>
-            <input type="text" name="Numero" id="numero" placeholder="numero" required class="preInput">
+            <input type="text" name="Numero" id="numero" placeholder="numero"  class="preInput">
             <br><br>
             <h4><ion-icon name="mail"></ion-icon>e-mail: </h4>
-            <input type="email" name="Correo" id="email" placeholder="correo electronico" required class="preInput">
+            <input type="email" name="Correo" id="email" placeholder="correo electronico"  class="preInput">
             <br><br>
             <h4><ion-icon name="lock-closed"></ion-icon>Contraseña: </h4>
-            <input type="password" name="Contraseña" id="contra" placeholder="contraseña" required class="preInput">
+            <input type="password" name="Contraseña" id="contra" placeholder="contraseña"  class="preInput">
             <br><br>
             <h4><ion-icon name="document-lock"></ion-icon>Confirmar: </h4>
-            <input type="password" name="contraConf" id="contraConf" placeholder="contraseña" required class="preInput">
+            <input type="password" name="contraConf" id="contraConf" placeholder="contraseña"  class="preInput">
             <br><br><br>
-            <button type="submit" class="preButton" id="open-popup-btn" onclick="Registro()">INICIAR</button>
+            <button type="button" class="preButton" id="open-popup-btn" onclick="Registro()">INICIAR</button>
             <br><br><br>
         </form>
     </section>    
@@ -89,9 +89,8 @@
                 swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
             }else if((pdC == "")){
                 swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
-            }else if(pd == document.getElementById("contraConf").value){
-                swal("Registro completado", "Dirigete al login para iniciar sesion", "success")
-                Button:["INICIAR SESION"]   
+            }else if(pd == document.getElementById("contraConf").value){    
+                frmRegistrar.submit();
             }
             else{
                 swal("Contraseñas Distintas", "Asegurate de que las contraseñas coincidan", "error");

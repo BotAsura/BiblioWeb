@@ -174,10 +174,10 @@ a.active {
     border-radius: 10px;
 }
 
-    .product-container img {
-        width: 270px;
-        height: 350px;
-    }
+.product-container img {
+    width: 270px;
+    height: 350px;
+}
 
 /*CARRITO*/
 .carrito {
