@@ -16,18 +16,18 @@
 <body>
     <section id="dividida">
         <div class="derecha">
-            <form asp-action="Login" asp-controller="Home" method="post" class="login">
+            <form asp-action="Login" asp-controller="Home" method="post" class="login" id="frmLogin">
                 <ion-icon name="book"></ion-icon>BiblioWeb
                 <br><br>
                 <h2>Inicia Sesion</h2>
                 <hr><br>
                 <h4><ion-icon name="mail"></ion-icon>e-mail:</h4>
-                <input type="email" name="Correo" id="email" placeholder="correo electronico" required class="preInput">
+                <input type="email" name="Correo" id="email" placeholder="correo electronico"  class="preInput">
                 <br><br>
                 <h4><ion-icon name="lock-closed"></ion-icon>Contraseña:</h4>
-                <input type="password" name="Contraseña" id="contra" placeholder="contraseña" required class="preInput">
+                <input type="password" name="Contraseña" id="contra" placeholder="contraseña"  class="preInput">
                 <br><br><br>
-                <button type="submit"  class="preButton">INICIAR</button>
+                <button type="button"  class="preButton" onclick="Login()">INICIAR</button>
             </form>
         </div>
         <div class="izquierda">
@@ -50,13 +50,16 @@
             var passw = document.getElementById("contra").value;
 
             var gmail = (mail.substr(-9));
-            if (mail = "") {
+            if (mail == "") {
                 swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
-            } else if (passw = "") {
+            } else if (passw == "") {
                 swal("Campos Faltantes", "Asegurate de que los campos esten llenos", "error");
             } else if (!(gmail == "gmail.com")) {
                 swal("Correo No Valido", "Asegurate de que pusiste un correo valido: terminacion gmail.com", "error");
-            } 
+            } else { 
+                frmLogin.submit();
+            }    
+
         }
     </script>
 </body>
